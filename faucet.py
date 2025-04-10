@@ -12,6 +12,8 @@ print("""
  |_|  |_|_|\__,_|\__,_|\___|_| |_|\_____\___/ \__,_|\___|
 
              MegaETH Faucet by Aero25x
+             
+            Join us to get more scripts
             https://t.me/hidden_coding
 
 

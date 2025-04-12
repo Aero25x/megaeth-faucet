@@ -126,7 +126,7 @@ You can further adjust thread counts, endpoints, and other settings as needed.
 Execute the script to initiate the token claim process on the MegaETH Faucet:
 
 ```bash
-python main.py
+python faucet.py
 ```
 
 ### Example Output

@@ -6,21 +6,46 @@
 [![Join our Telegram ENG](https://img.shields.io/badge/Telegram-EN-03A500?style=for-the-badge&logo=telegram&logoColor=white&labelColor=blue&color=red)](https://t.me/hidden_coding_en)
 
 
+
+
+
+
 # MegaETH Faucet Automation
 
-An automated script designed to simplify claiming tokens from the MegaETH Faucet. This script solves Turnstile captchas using 2Captcha integration, supports proxies (including authenticated proxies), and processes multiple wallet addresses concurrently.
+An automated script designed to claim tokens from the [MegaETH Faucet](https://github.com/Aero25x/megaeth-faucet). This repository harnesses the power of automation, multi-threading, and 2Captcha integration to streamline the token claim process on **MegaETH**, a high-performance, Layer 2 blockchain for Ethereum.
+
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Configuration](#configuration)
+  - [Wallet Configuration](#wallet-configuration)
+  - [Proxy Configuration](#proxy-configuration)
+  - [Script Settings](#script-settings)
+- [Usage](#usage)
+- [Logging](#logging)
+- [About MegaETH](#about-megaeth)
+- [Contribution](#contribution)
+- [License](#license)
+
+## Project Overview
+
+This repository offers an **automated solution** specifically crafted for the MegaETH network. MegaETH is a Layer 2 blockchain solution designed to enhance the scalability of Ethereum by enabling real-time transaction processing. Our script targets the MegaETH Faucet, facilitating **fast and reliable token distribution** through automated processes that handle Turnstile captchas, proxy configurations, and multi-threaded wallet claims. 
 
 ## Features
 
-- **Automated Turnstile Captcha Solving:** Integrates with 2Captcha to automatically solve captchas.
-- **Proxy Support:** Works with both non-authenticated (`ip:port`) and authenticated proxies (`ip:port:user:pass`).
-- **Multi-threaded Processing:** Processes wallet claims concurrently for improved efficiency.
+- **Automated Turnstile Captcha Solving:** Seamlessly integrates with [2Captcha](https://2captcha.com/) to solve captchas automatically.
+- **Proxy Support:** Compatible with both non-authenticated (`ip:port`) and authenticated proxies (`ip:port:user:pass`).
+- **Multi-threaded Processing:** Handles wallet claims concurrently to maximize efficiency and throughput.
 - **Flexible Wallet Configuration:** Supports wallet addresses from both `wallet.txt` (plain text) and `wallets.json` (JSON format).
-- **Comprehensive Logging:** Logs successful claims in `success.txt` and failures in `fail.txt`.
+- **Enhanced Logging:** Captures detailed logs with successes in `success.txt` and failures in `fail.txt`.
 
 ## Installation
 
-### Clone Repository
+### Clone the Repository
+
+Clone the repository from GitHub to start using the automation tool:
 
 ```bash
 git clone https://github.com/Aero25x/megaeth-faucet.git
@@ -29,25 +54,33 @@ cd megaeth-faucet
 
 ### Install Dependencies
 
+Install all necessary dependencies with pip:
+
 ```bash
 pip install requests colorama twocaptcha pytz tzlocal
-pip install 2captcha-python == 1.5.1
+pip install 2captcha-python==1.5.1
 ```
+
+*Note: Verify package versions and update if necessary.*
 
 ## Configuration
 
-Before running the script, configure the following files and settings:
+Before running the script, update the configurations to match your environment and MegaETH network settings.
 
-### 1. `wallet.txt`
-Add your wallet addresses, one per line:
+### Wallet Configuration
+
+#### `wallet.txt`
+
+Add your MegaETH wallet addresses—one per line:
 
 ```text
 0xYourWalletAddress1
 0xYourWalletAddress2
 ```
 
-### 2. `wallets.json` (Optional)
-To load additional wallets from a JSON file, create `wallets.json`:
+#### `wallets.json` (Optional)
+
+Load additional wallet addresses using JSON format:
 
 ```json
 [
@@ -56,26 +89,29 @@ To load additional wallets from a JSON file, create `wallets.json`:
 ]
 ```
 
-Wallet addresses from `wallets.json` will be combined with those in `wallet.txt`.
+Wallet addresses from `wallets.json` are combined with those in `wallet.txt`.
 
-### 3. `proxy.txt`
+### Proxy Configuration
+
+#### `proxy.txt`
+
 List your proxies in one of the following formats:
 
 - **Without Authentication:**
 
-```text
-192.168.1.100:8080
-```
+  ```text
+  192.168.1.100:8080
+  ```
 
 - **With Authentication:**
 
-```text
-31.56.139.207:6276:hxjsvept:3pzgwox5suvu
-```
+  ```text
+  31.56.139.207:6276:hxjsvept:3pzgwox5suvu
+  ```
 
-### 4. Script Configuration
+### Script Settings
 
-Edit the script (e.g., `main.py`) to update your API keys and other settings:
+Edit the script (e.g., `main.py`) and update your API keys along with MegaETH configuration details:
 
 ```python
 TWO_CAPTCHA_API_KEY = "Your_2Captcha_API_Key"
@@ -83,17 +119,17 @@ TURNSTILE_SITEKEY = "Your_Turnstile_Sitekey"
 TURNSTILE_PAGE_URL = "https://testnet.megaeth.com/"
 ```
 
-Adjust additional configuration options such as thread count and API endpoints as needed.
+You can further adjust thread counts, endpoints, and other settings as needed.
 
-## Running the Script
+## Usage
 
-To start the claim process, run:
+Execute the script to initiate the token claim process on the MegaETH Faucet:
 
 ```bash
 python main.py
 ```
 
-### Example Run Output
+### Example Output
 
 ```
 Processing wallet: 0xYourWalletAddress1
@@ -104,14 +140,31 @@ Claim response: https://www.megaexplorer.xyz/tx/transaction_hash_here
 Claim SUCCESS for wallet 0xYourWalletAddress1
 ```
 
-## Logs
+## Logging
 
-- **Successful Claims:** Logged in `success.txt`
-- **Failed Attempts:** Logged in `fail.txt`
+- **Successful Claims:** All successful transactions are recorded in `success.txt`.
+- **Failed Attempts:** Any errors or failed transactions are recorded in `fail.txt`.
+
+## About MegaETH
+
+[MegaETH](https://megaeth.org/) is a state-of-the-art, Layer 2 blockchain network designed to supercharge Ethereum by providing high scalability and low-latency transactions. Key points include:
+
+- **High Throughput:** Capable of processing over 100,000 transactions per second (TPS).
+- **Modular Architecture:** Utilizes specialized nodes such as sequencers, provers, and full nodes to optimize transaction ordering and execution.
+- **EVM Compatibility:** Fully compatible with the Ethereum Virtual Machine, ensuring seamless integration with existing Ethereum infrastructure.
+
+This automation script is built for users who want to leverage the fast-paced transactions on the MegaETH network for automated token claims.
 
 ## Contribution
 
-Contributions are welcome! Please open an issue or submit a pull request for improvements or bug fixes.
+Contributions are highly encouraged! If you have improvements, feature suggestions, or bug fixes, please open an issue or submit a pull request. Your contributions help make the MegaETH ecosystem even stronger.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+
+
 
 ## Disclaimer
 

@@ -31,6 +31,7 @@ cd megaeth-faucet
 
 ```bash
 pip install requests colorama twocaptcha pytz tzlocal
+pip install 2captcha-python == 1.5.1
 ```
 
 ## Configuration
